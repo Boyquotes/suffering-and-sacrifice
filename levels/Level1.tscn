@@ -1,0 +1,285 @@
+[gd_scene load_steps=32 format=3 uid="uid://ccq8432d0ejqm"]
+
+[ext_resource type="Script" path="res://levels/RestrainCamera.gd" id="1_4yu6k"]
+[ext_resource type="Texture2D" uid="uid://4y1e2uf3dd4x" path="res://assets/Level 1 pngs/background-level-11.png" id="1_a5n5w"]
+[ext_resource type="Texture2D" uid="uid://dhmltxyaif375" path="res://assets/Level 1 pngs/background-level-12.png" id="2_ov5sl"]
+[ext_resource type="Texture2D" uid="uid://by2o5mfppohd7" path="res://assets/Level 1 pngs/background-level-13.png" id="3_h1jh1"]
+[ext_resource type="Texture2D" uid="uid://daghn8apimxgh" path="res://assets/Level 1 pngs/background-level-14.png" id="4_14dpn"]
+[ext_resource type="Texture2D" uid="uid://cc7tovvfhe2gt" path="res://assets/Level 1 pngs/background-level-17.png" id="5_rorqu"]
+[ext_resource type="AudioStream" uid="uid://be6spr5asxwe7" path="res://assets/Music/Level_1.wav" id="6_oco8m"]
+[ext_resource type="Texture2D" uid="uid://dfriggoart82f" path="res://assets/Level 1 pngs/background-level-15.png" id="6_opl7a"]
+[ext_resource type="Texture2D" uid="uid://cblwh50yprcev" path="res://assets/Level 1 pngs/hiouse.png" id="7_cfef8"]
+[ext_resource type="PackedScene" uid="uid://bkg7tjgol4okx" path="res://Player.tscn" id="8_h6edr"]
+[ext_resource type="Script" path="res://DoorSensor.gd" id="9_dlh44"]
+[ext_resource type="Script" path="res://ConversationalCultist.gd" id="11_7tlqa"]
+[ext_resource type="Texture2D" uid="uid://dd6nuvvpr545f" path="res://assets/Mobs/Sprite-cultist.png" id="12_5wnsp"]
+[ext_resource type="FontFile" uid="uid://3f75y2q8folw" path="res://assets/fonts/Anglodavek-a55E.ttf" id="14_ky83m"]
+[ext_resource type="Script" path="res://levels/DialogueBox.gd" id="14_oxg6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1s0t"]
+size = Vector2(320, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uu7i"]
+size = Vector2(319.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okh7u"]
+size = Vector2(20, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwjgx"]
+size = Vector2(20, 96)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_51nso"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oc2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlg0r"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uugl0"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn4iw"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08tv5"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ugna"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0l88"]
+atlas = ExtResource("12_5wnsp")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htcx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uugl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn4iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08tv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ugna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0l88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxrsy"]
+size = Vector2(20, 11)
+
+[sub_resource type="Theme" id="Theme_hobll"]
+default_font = ExtResource("14_ky83m")
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_i4dmy"]
+default_font = ExtResource("14_ky83m")
+
+[node name="Outside" type="Node2D"]
+script = ExtResource("1_4yu6k")
+
+[node name="MapArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea"]
+shape = SubResource("RectangleShape2D_f1s0t")
+
+[node name="Background-level-17" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("5_rorqu")
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0.25, 39.5)
+shape = SubResource("RectangleShape2D_5uu7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture_filter = 1
+texture = ExtResource("6_opl7a")
+
+[node name="Hiouse" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(140, -15)
+scale = Vector2(1.39062, 1.39062)
+texture = ExtResource("7_cfef8")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(99.5, 0)
+
+[node name="Collider" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(70.5, 0)
+shape = SubResource("RectangleShape2D_okh7u")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-170, 0)
+shape = SubResource("RectangleShape2D_fwjgx")
+
+[node name="DoorSensor" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+script = ExtResource("9_dlh44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorSensor"]
+position = Vector2(116, 26)
+shape = SubResource("CapsuleShape2D_51nso")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_oco8m")
+autoplay = true
+
+[node name="Cultist" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-175, 25)
+script = ExtResource("11_7tlqa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cultist"]
+material = SubResource("ShaderMaterial_0oc2j")
+scale = Vector2(0.34375, 0.34375)
+sprite_frames = SubResource("SpriteFrames_htcx7")
+flip_h = true
+
+[node name="TalkingRange" type="CollisionShape2D" parent="Cultist"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hxrsy")
+
+[node name="Player" parent="." instance=ExtResource("8_h6edr")]
+unique_name_in_owner = true
+position = Vector2(-48, 5)
+
+[node name="Static" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Static"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Static/ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Static/ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture = ExtResource("1_a5n5w")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Static/ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Static/ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+texture = ExtResource("2_ov5sl")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Static/ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Static/ParallaxBackground/ParallaxLayer3"]
+texture_filter = 1
+texture = ExtResource("3_h1jh1")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Static/ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Static/ParallaxBackground/ParallaxLayer4"]
+texture_filter = 1
+texture = ExtResource("4_14dpn")
+metadata/_edit_lock_ = true
+
+[node name="DialogueBox" type="MarginContainer" parent="Static"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("14_oxg6w")
+
+[node name="ColorRect" type="ColorRect" parent="Static/DialogueBox"]
+layout_mode = 2
+color = Color(0.0745098, 0.0745098, 0.0745098, 0.756863)
+
+[node name="MarginContainer" type="MarginContainer" parent="Static/DialogueBox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Static/DialogueBox/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="DialogueName" type="RichTextLabel" parent="Static/DialogueBox/ColorRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_hobll")
+theme_override_colors/default_color = Color(0.85098, 0.85098, 0.85098, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "Cloaked Figure"
+fit_content = true
+
+[node name="DialogueText" type="RichTextLabel" parent="Static/DialogueBox/ColorRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Go to the house. I don't think I need to tell you how to open the door do I? Yes of course the answer is push E."
+fit_content = true
+
+[node name="OptionButton" type="OptionButton" parent="Static/DialogueBox/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_i4dmy")
+item_count = 4
+selected = 0
+popup/item_0/text = "Click to choose tier"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Tier 1"
+popup/item_1/id = 1
+popup/item_2/text = "Tier 2"
+popup/item_2/id = 2
+popup/item_3/text = "Tier 3"
+popup/item_3/id = 3
+
+[connection signal="body_entered" from="DoorSensor" to="Player" method="_on_doorway_enter" binds= ["res://levels/Level2.tscn"]]
+[connection signal="body_exited" from="DoorSensor" to="Player" method="_on_doorway_exit"]
+[connection signal="body_entered" from="Cultist" to="Cultist" method="_on_body_entered"]
+[connection signal="body_exited" from="Cultist" to="Cultist" method="_on_body_exited"]
+[connection signal="item_selected" from="Static/DialogueBox/ColorRect/MarginContainer/OptionButton" to="Static/DialogueBox" method="_on_option_button_item_selected"]

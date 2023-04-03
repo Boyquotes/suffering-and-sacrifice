@@ -1,0 +1,257 @@
+[gd_scene load_steps=27 format=3 uid="uid://b416pidp81d3d"]
+
+[ext_resource type="Script" path="res://levels/RestrainCamera.gd" id="1_bcbpf"]
+[ext_resource type="Texture2D" uid="uid://ca8te5qcbck56" path="res://assets/Level 3 pngs/background-level31-lushcaves.png" id="1_wj2bf"]
+[ext_resource type="Texture2D" uid="uid://uq1ek65y7nxs" path="res://assets/Level 3 pngs/background-level32-lushcaves.png" id="2_77cyc"]
+[ext_resource type="Texture2D" uid="uid://baa6klu1ud02a" path="res://assets/Level 3 pngs/background-level33-lushcaves.png" id="3_cwli0"]
+[ext_resource type="Texture2D" uid="uid://f1s0hfmcabxw" path="res://assets/Level 3 pngs/background-level34-lushcaves.png" id="4_2gkpo"]
+[ext_resource type="Texture2D" uid="uid://cjsb4ihw4qfcu" path="res://assets/Level 3 pngs/background-level36-lushcaves.png" id="5_02wqq"]
+[ext_resource type="Texture2D" uid="uid://yuhdyklf2eyw" path="res://assets/Level 3 pngs/background-level37-lushcaves.png" id="5_n1myl"]
+[ext_resource type="PackedScene" uid="uid://bkg7tjgol4okx" path="res://Player.tscn" id="6_d7do6"]
+[ext_resource type="Texture2D" uid="uid://vnatnl6hv4ue" path="res://assets/Level 3 pngs/background-level35-lushcaves.png" id="6_dchvw"]
+[ext_resource type="AudioStream" uid="uid://cql0r5kkmw75p" path="res://assets/Music/Leve_3.wav" id="10_ys324"]
+[ext_resource type="PackedScene" uid="uid://b20r26wsq8wgm" path="res://Mushroom.tscn" id="11_jmuwi"]
+[ext_resource type="PackedScene" uid="uid://bqgpojlp0hah7" path="res://Slime.tscn" id="12_7jbdf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to2mf"]
+size = Vector2(320, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7lds"]
+size = Vector2(31, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs103"]
+size = Vector2(21, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsryf"]
+size = Vector2(24, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qfix"]
+size = Vector2(32, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qhky"]
+size = Vector2(33, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvfau"]
+size = Vector2(13, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whtgo"]
+size = Vector2(15.5, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elu7m"]
+size = Vector2(20, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyhl8"]
+size = Vector2(20, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p58wn"]
+size = Vector2(4.5, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnxc1"]
+size = Vector2(9, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl4uw"]
+size = Vector2(7, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfhxb"]
+size = Vector2(11, 20)
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_bcbpf")
+
+[node name="MapArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea"]
+shape = SubResource("RectangleShape2D_to2mf")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_wj2bf")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_77cyc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_cwli0")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("4_2gkpo")
+
+[node name="Rails" type="Sprite2D" parent="."]
+texture = ExtResource("5_02wqq")
+
+[node name="Mushrooms" type="Sprite2D" parent="."]
+texture = ExtResource("6_dchvw")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture = ExtResource("5_n1myl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(-160, 18, -120, 18, -120, 25, -93, 25, -94, 40, -94, 48, -160, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-62.5, 36.5)
+shape = SubResource("RectangleShape2D_t7lds")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-29.5, 36.5)
+shape = SubResource("RectangleShape2D_xs103")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+position = Vector2(4, 36.5)
+shape = SubResource("RectangleShape2D_qsryf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Floor"]
+position = Vector2(32, 35)
+shape = SubResource("RectangleShape2D_6qfix")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(65, 32, 75, 32, 75, 25, 116, 25, 114, 48, 68, 48)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(112, -12, 136, -12, 136, -5, 128, -2, 119, -2, 112, -6)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Floor"]
+position = Vector2(143.5, 34.5)
+shape = SubResource("RectangleShape2D_5qhky")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Floor"]
+position = Vector2(54.5, 19.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Floor"]
+position = Vector2(62.5, 16.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Floor"]
+position = Vector2(67.5, 13.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Floor"]
+position = Vector2(72.5, 10.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Floor"]
+position = Vector2(78.5, 7.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Floor"]
+position = Vector2(83.5, 4.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Floor"]
+position = Vector2(87.5, 1.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Floor"]
+position = Vector2(93.5, -1.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Floor"]
+position = Vector2(98.5, -4.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Floor"]
+position = Vector2(104.5, -7.5)
+shape = SubResource("RectangleShape2D_gvfau")
+one_way_collision = true
+
+[node name="Player" parent="." instance=ExtResource("6_d7do6")]
+unique_name_in_owner = true
+position = Vector2(-145, -3)
+
+[node name="Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(56.25, 43.25)
+shape = SubResource("RectangleShape2D_whtgo")
+debug_color = Color(0.956863, 0, 0.533333, 0.419608)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Left Wall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-170, -12.5)
+shape = SubResource("RectangleShape2D_elu7m")
+
+[node name="Right Wall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(170, -26.5)
+shape = SubResource("RectangleShape2D_pyhl8")
+
+[node name="Level1Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Portal"]
+position = Vector2(-43.75, 38)
+shape = SubResource("RectangleShape2D_p58wn")
+debug_color = Color(0, 0.647059, 0.211765, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level1Portal"]
+position = Vector2(121.5, 39.5)
+shape = SubResource("RectangleShape2D_nnxc1")
+debug_color = Color(0.113725, 0.647059, 0, 0.419608)
+
+[node name="Level2Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2Portal"]
+position = Vector2(-13.5, 38)
+shape = SubResource("RectangleShape2D_cl4uw")
+debug_color = Color(0.298039, 0.52549, 1, 0.886275)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level2Portal"]
+position = Vector2(-86, 38)
+shape = SubResource("RectangleShape2D_kfhxb")
+debug_color = Color(0.207843, 0.517647, 0.988235, 0.905882)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ys324")
+autoplay = true
+
+[node name="Mushroom" parent="." instance=ExtResource("11_jmuwi")]
+position = Vector2(-111, 22)
+
+[node name="Mushroom2" parent="." instance=ExtResource("11_jmuwi")]
+position = Vector2(124, -15)
+
+[node name="Mushroom3" parent="." instance=ExtResource("11_jmuwi")]
+position = Vector2(69, 7)
+
+[node name="Mushroom4" parent="." instance=ExtResource("11_jmuwi")]
+position = Vector2(39, 19)
+
+[node name="Mushroom5" parent="." instance=ExtResource("11_jmuwi")]
+position = Vector2(4, 22)
+
+[node name="Slime" parent="." groups=["Enemy"] instance=ExtResource("12_7jbdf")]
+position = Vector2(67, 28)
+
+[node name="Slime2" parent="." groups=["Enemy"] instance=ExtResource("12_7jbdf")]
+position = Vector2(105, -13)
+
+[node name="Slime3" parent="." groups=["Enemy"] instance=ExtResource("12_7jbdf")]
+position = Vector2(-72, 21)
+
+[connection signal="body_entered" from="Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level4.tscn"]]
+[connection signal="body_entered" from="Level1Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level1.tscn"]]
+[connection signal="body_entered" from="Level2Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level2.tscn"]]

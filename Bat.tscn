@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch6talqqx7msf"]
+
+[ext_resource type="Script" path="res://Bat.gd" id="1_x3ocy"]
+[ext_resource type="Texture2D" uid="uid://cjippopkpkp2b" path="res://assets/Mobs/Sprite-bat.png" id="2_6cmt8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22x2d"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(0, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mshjc"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(32, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olfx7"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(64, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjt2r"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(96, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq88l"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(128, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxf4v"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(160, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0l7r"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(192, 9, 32, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6n4j"]
+atlas = ExtResource("2_6cmt8")
+region = Rect2(224, 9, 32, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0y2lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22x2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mshjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olfx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjt2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq88l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxf4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0l7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6n4j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nb3ni"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_x3ocy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0y2lt")
+autoplay = "default"
+frame = 6
+frame_progress = 0.558513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nb3ni")
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-28, 28)
+collision_mask = 2
+
+[node name="RayRight" type="RayCast2D" parent="."]
+target_position = Vector2(28, 28)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

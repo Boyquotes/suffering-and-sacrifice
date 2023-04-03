@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://4b0g16wii3h4"]
+
+[ext_resource type="Script" path="res://levels/RestrainCamera.gd" id="1_jhn41"]
+[ext_resource type="PackedScene" uid="uid://bkg7tjgol4okx" path="res://Player.tscn" id="2_o68qk"]
+[ext_resource type="FontFile" uid="uid://3f75y2q8folw" path="res://assets/fonts/Anglodavek-a55E.ttf" id="4_w4g2k"]
+[ext_resource type="Script" path="res://levels/HomeTransition.gd" id="5_wegbd"]
+[ext_resource type="AudioStream" uid="uid://c8v5rdabu2jl" path="res://assets/Music/menu.wav" id="6_n4ykr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubbdr"]
+size = Vector2(254, 121.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qwy1"]
+size = Vector2(310, 20)
+
+[sub_resource type="Theme" id="Theme_do6xk"]
+default_font = ExtResource("4_w4g2k")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pxcq"]
+size = Vector2(23, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c31h5"]
+size = Vector2(20, 101)
+
+[sub_resource type="Gradient" id="Gradient_m8eom"]
+colors = PackedColorArray(1, 1, 0.698039, 0, 1, 1, 0.807843, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xyf0v"]
+gradient = SubResource("Gradient_m8eom")
+
+[node name="WhiteRoom" type="Node2D"]
+script = ExtResource("1_jhn41")
+
+[node name="MapArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea"]
+position = Vector2(5, -19.25)
+shape = SubResource("RectangleShape2D_ubbdr")
+
+[node name="Player" parent="." instance=ExtResource("2_o68qk")]
+unique_name_in_owner = true
+position = Vector2(-118, 17)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_2qwy1")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -73.0
+offset_top = -42.0
+offset_right = 75.0
+offset_bottom = -17.0
+theme = SubResource("Theme_do6xk")
+text = "There is a way..."
+
+[node name="HomePortal" type="Area2D" parent="."]
+script = ExtResource("5_wegbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomePortal"]
+position = Vector2(143.5, -30)
+shape = SubResource("RectangleShape2D_4pxcq")
+
+[node name="Level4Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Portal"]
+position = Vector2(-132, -29.5)
+shape = SubResource("RectangleShape2D_c31h5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n4ykr")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(98, -19.5)
+scale = Vector2(1.5625, 2.26562)
+texture = SubResource("GradientTexture2D_xyf0v")
+
+[connection signal="body_entered" from="HomePortal" to="HomePortal" method="_on_home_portal_entered"]
+[connection signal="body_entered" from="Level4Portal" to="HomePortal" method="_on_level_4_portal_body_entered"]

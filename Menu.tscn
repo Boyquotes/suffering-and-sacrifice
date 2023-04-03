@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://ciwkgnhrwndl"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_hs8m6"]
+[ext_resource type="Texture2D" uid="uid://ca8te5qcbck56" path="res://assets/Level 3 pngs/background-level31-lushcaves.png" id="1_j3uqk"]
+[ext_resource type="Texture2D" uid="uid://dd6nuvvpr545f" path="res://assets/Mobs/Sprite-cultist.png" id="2_m0cd4"]
+[ext_resource type="FontFile" uid="uid://3f75y2q8folw" path="res://assets/fonts/Anglodavek-a55E.ttf" id="3_nys4p"]
+[ext_resource type="AudioStream" uid="uid://c8v5rdabu2jl" path="res://assets/Music/menu.wav" id="4_prap3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph6k4"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g478c"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu1c1"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3oac"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv4q7"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tygp6"]
+atlas = ExtResource("2_m0cd4")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fugcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph6k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g478c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu1c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3oac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv4q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tygp6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hs8m6")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.6, 0, 0, 0.419608)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j3uqk")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="LeftCultist" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.360784, 0, 0, 0.290196)
+texture_filter = 1
+position = Vector2(169, 328)
+scale = Vector2(7.51563, 7.51563)
+sprite_frames = SubResource("SpriteFrames_fugcc")
+autoplay = "default"
+flip_h = true
+
+[node name="RightCultist" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.360784, 0, 0, 0.290196)
+texture_filter = 1
+position = Vector2(997, 328)
+scale = Vector2(7.51563, 7.51563)
+sprite_frames = SubResource("SpriteFrames_fugcc")
+autoplay = "default"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -24.5
+offset_right = 120.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nys4p")
+theme_override_font_sizes/font_size = 22
+text = "Let's Play a Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_prap3")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

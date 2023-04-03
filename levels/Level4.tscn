@@ -1,0 +1,200 @@
+[gd_scene load_steps=26 format=3 uid="uid://detomn67m5vgi"]
+
+[ext_resource type="Script" path="res://levels/RestrainCamera.gd" id="1_q33yy"]
+[ext_resource type="Texture2D" uid="uid://djku2varb1v7b" path="res://assets/Level 4 pngs/background-level-41.png" id="1_v3akc"]
+[ext_resource type="Texture2D" uid="uid://clt34q1djfeo8" path="res://assets/Level 4 pngs/background-level-42.png" id="2_m4ru2"]
+[ext_resource type="Texture2D" uid="uid://8lywdbrh6ykj" path="res://assets/Level 4 pngs/background-level-43.png" id="3_pff2r"]
+[ext_resource type="Texture2D" uid="uid://bsn51hq2d2irs" path="res://assets/Level 4 pngs/background-level-44.png" id="4_nbxqb"]
+[ext_resource type="Texture2D" uid="uid://durc6ejr2mnmx" path="res://assets/Level 4 pngs/background-level-47.png" id="5_ecuni"]
+[ext_resource type="Texture2D" uid="uid://crlnkxucdnm6q" path="res://assets/Level 4 pngs/background-level-45.png" id="6_uhjm3"]
+[ext_resource type="Texture2D" uid="uid://broqvifh6sand" path="res://assets/Level 4 pngs/background-level-48.png" id="7_0twjw"]
+[ext_resource type="Texture2D" uid="uid://e04mrbwuu5lq" path="res://assets/Level 4 pngs/background-level-46.png" id="8_sh40j"]
+[ext_resource type="PackedScene" uid="uid://bkg7tjgol4okx" path="res://Player.tscn" id="9_g3g1l"]
+[ext_resource type="AudioStream" uid="uid://dr1wuxfopehhm" path="res://assets/Music/Level_2.wav" id="11_q4v3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kugoy"]
+size = Vector2(320, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ntx3"]
+size = Vector2(7, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t1f4"]
+size = Vector2(27, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yve0f"]
+size = Vector2(34, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjrvu"]
+size = Vector2(52, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxvj1"]
+size = Vector2(21, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fdin"]
+size = Vector2(20, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atqcf"]
+size = Vector2(20, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyej"]
+size = Vector2(5, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ykdk"]
+size = Vector2(5.5, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msabq"]
+size = Vector2(9, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dvre"]
+size = Vector2(11, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba7cb"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvdny"]
+size = Vector2(16, 35)
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_q33yy")
+
+[node name="MapArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea"]
+shape = SubResource("RectangleShape2D_kugoy")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_v3akc")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_m4ru2")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_pff2r")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("4_nbxqb")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="Candels" type="Sprite2D" parent="Floor"]
+texture = ExtResource("5_ecuni")
+
+[node name="Ladders" type="Sprite2D" parent="Floor"]
+texture = ExtResource("6_uhjm3")
+
+[node name="Outline" type="Sprite2D" parent="Floor"]
+texture = ExtResource("7_0twjw")
+
+[node name="Arc" type="Sprite2D" parent="Floor"]
+texture = ExtResource("8_sh40j")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(-160, 18, -124, 18, -124, 25, -94, 25, -94, 48, -160, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-83.5, 35.5)
+shape = SubResource("RectangleShape2D_5ntx3")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(-73, 20, -41, 20, -41, 38, -17, 38, -17, 34, -1, 34, -1, 31, 11, 31, 11, 25, 37, 25, 37, 48, -73, 48)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(62.5, 36)
+shape = SubResource("RectangleShape2D_4t1f4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+position = Vector2(107, 33)
+shape = SubResource("RectangleShape2D_yve0f")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Floor"]
+position = Vector2(154, 43.5)
+shape = SubResource("RectangleShape2D_qjrvu")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(128, 48, 128, 36, 136, 21, 139, 18, 139, 4, 124, 4, 124, 48)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Floor"]
+position = Vector2(149.5, 6.5)
+shape = SubResource("RectangleShape2D_xxvj1")
+one_way_collision = true
+
+[node name="Player" parent="." instance=ExtResource("9_g3g1l")]
+unique_name_in_owner = true
+position = Vector2(-146, -1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-170, -16)
+shape = SubResource("RectangleShape2D_6fdin")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(170, -32)
+shape = SubResource("RectangleShape2D_atqcf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_q4v3x")
+autoplay = true
+
+[node name="Level3Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3Portal"]
+position = Vector2(-76.5, 36.5)
+shape = SubResource("RectangleShape2D_nbyej")
+debug_color = Color(0.52549, 0.572549, 0.054902, 0.898039)
+
+[node name="Level1Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Portal"]
+position = Vector2(-90.75, 39)
+shape = SubResource("RectangleShape2D_5ykdk")
+debug_color = Color(0, 0.647059, 0.211765, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level1Portal"]
+position = Vector2(43, 38)
+shape = SubResource("RectangleShape2D_msabq")
+debug_color = Color(0.113725, 0.647059, 0, 0.419608)
+
+[node name="Level2Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level2Portal"]
+position = Vector2(83, 37)
+shape = SubResource("RectangleShape2D_0dvre")
+debug_color = Color(0.207843, 0.517647, 0.988235, 0.905882)
+
+[node name="LadderSpawn" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(155, 35)
+
+[node name="WhiteRoomPortal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhiteRoomPortal"]
+position = Vector2(170, 24)
+shape = SubResource("RectangleShape2D_ba7cb")
+
+[node name="Ladder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+position = Vector2(148, 21.5)
+shape = SubResource("RectangleShape2D_dvdny")
+
+[connection signal="body_entered" from="Level3Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level3.tscn"]]
+[connection signal="body_entered" from="Level1Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level1.tscn"]]
+[connection signal="body_entered" from="Level2Portal" to="Player" method="_on_portal_entered" binds= ["res://levels/Level2.tscn"]]
+[connection signal="body_entered" from="WhiteRoomPortal" to="Player" method="_on_portal_entered" binds= ["res://levels/WhiteRoom.tscn"]]
+[connection signal="body_entered" from="Ladder" to="Player" method="_on_ladder_body_entered"]
+[connection signal="body_exited" from="Ladder" to="Player" method="_on_ladder_body_exited"]

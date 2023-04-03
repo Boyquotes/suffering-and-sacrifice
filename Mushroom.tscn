@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://b20r26wsq8wgm"]
+
+[ext_resource type="Script" path="res://Mushroom.gd" id="1_kstq1"]
+[ext_resource type="Texture2D" uid="uid://bm2mlrla2560c" path="res://assets/Mobs/Sprite-mushroom.png" id="1_mnn7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fbfh"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(0, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayjxw"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(16, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn88t"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(32, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6vp8"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(48, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5jwr"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(64, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpfuh"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(80, 5, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nh0m"]
+atlas = ExtResource("1_mnn7f")
+region = Rect2(96, 5, 16, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdn1c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fbfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayjxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn88t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6vp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5jwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpfuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nh0m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx051"]
+size = Vector2(10, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pa618"]
+radius = 54.037
+
+[node name="Mushroom" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_kstq1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vdn1c")
+autoplay = "default"
+frame = 4
+frame_progress = 0.00990775
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_wx051")
+disabled = true
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 2.0
+explosiveness = 0.07
+randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 54.0
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = -46.95
+angular_velocity_max = 39.13
+orbit_velocity_max = 1.0
+linear_accel_max = 1.09
+color = Color(0.219608, 0.184314, 0.184314, 1)
+anim_speed_min = 9.74
+anim_speed_max = 12.52
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="PlayerAttackRange" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pa618")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_PlayerDetectionZone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
